@@ -36,16 +36,16 @@ function ChangeTransform(index, type, values) {
     app.transforms[index].type = type;
     // update `app.transforms[index].mat4x4`
     // transform options: translate, scale, rotate_x, rotate_y, rotate_z
-    if (type.equals("translate")) {
-        app.transforms[index].mat4x4 = Mat4x4Translate(mat4x4, tx, ty, tz);
+    if (type.equals("translate")) {                         //values[0], values[1], values[2]
+        app.transforms[index].mat4x4 = Mat4x4Translate(app.transforms[index].mat4x4, values[0], values[1], values[2]);
     } else if (type.equals("scale")) {
-        app.transforms[index].mat4x4 = Mat4x4Scale(mat4x4, sx, sy, sz);
+        app.transforms[index].mat4x4 = Mat4x4Scale(app.transforms[index].mat4x4, values[0], values[1], values[2]);
     } else if (type.equals("rotate_x")) {
-        app.transforms[index].mat4x4 = Mat4x4RotateX(mat4x4, theta);
+        app.transforms[index].mat4x4 = Mat4x4RotateX(app.transforms[index].mat4x4, values[0]);
     } else if (type.equals("rotate_y")) {
-        app.transforms[index].mat4x4 = Mat4x4RotateY(mat4x4, theta);
+        app.transforms[index].mat4x4 = Mat4x4RotateY(app.transforms[index].mat4x4, values[0]);
     } else if (type.equals("rotate_z")) {
-        app.transforms[index].mat4x4 = Mat4x4RotateZ(mat4x4, theta);
+        app.transforms[index].mat4x4 = Mat4x4RotateZ(app.transforms[index].mat4x4, values[0]);
     }
     // recalculate compound transform and tranformed vertex
     app.compound = CalculateCompoundTransform(app.transforms);
